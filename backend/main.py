@@ -16,6 +16,12 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="AI Product Listing Assistant",lifespan=lifespan)
 
+@app.get("/users/me/prompt-history")
+async def get_my_requests(request: Request):
+    user_id_address = request.client.host
+    print(f'{user_id_address=}')
+    user_request = get_user_request(ip_address = user_id_address)
+    return user_request
 
 @app.post("/generate-listing")
 async def generate_listing(
