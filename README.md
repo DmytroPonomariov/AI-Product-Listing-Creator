@@ -10,6 +10,8 @@ Users upload a photo, and the system automatically generates:
 
 ## 🎥 Demo
 
+![homepage](./assets/homepage.png)
+
 ### Full MVP Flow (5-Step AI Listing Generator)
 
 ![Demo](./assets/demo.gif)
