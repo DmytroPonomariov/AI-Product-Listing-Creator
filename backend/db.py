@@ -16,18 +16,6 @@ class ChatRequest(Base):
     prompt: Mapped[str]
     response: Mapped[str]
 
-# class ListingRequest(Base):
-#     __tablename__ = "listing_requests"
-
-#     id: Mapped[int] = mapped_column(primary_key=True)
-
-#     ip_address: Mapped[str] = mapped_column(index=True)
-
-#     category: Mapped[str]
-#     hint: Mapped[str]
-
-#     created_at: Mapped[datetime]
-
 
 def get_user_request(ip_address: str) -> list[ChatRequest]:
     with Session() as new_session:
@@ -35,11 +23,11 @@ def get_user_request(ip_address: str) -> list[ChatRequest]:
         result = new_session.execute(query)
         return result.scalars().all()
 
-# def add_request_data(ip_address:str,prompt:str,response:str) -> None:
-#     with Session() as new_session:
-#         new_request = ChatRequest(ip_address=ip_address,prompt=prompt,response=response)
-#         new_session.add(new_request)
-#         new_session.commit()
+def add_request_data(ip_address:str,prompt:str,response:str) -> None:
+    with Session() as new_session:
+        new_request = ChatRequest(ip_address=ip_address,prompt=prompt,response=response)
+        new_session.add(new_request)
+        new_session.commit()
 
 # add resposnse to DB
 
